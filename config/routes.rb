@@ -12,6 +12,10 @@ Rails.application.routes.draw do
 
   resources :orders, only: [:create, :show]
 
+  resource :users, except: [:index, :edit, :update, :show, :destroy]
+
+  resource :sessions, except: [:index, :edit, :update, :show]
+
   namespace :admin do
     root to: 'dashboard#show'
     resources :products, except: [:edit, :update, :show]
