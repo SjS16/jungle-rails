@@ -2,6 +2,8 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    @order_items = LineItem.where(order_id: params[:id])
+ 
   end
 
   def create
@@ -18,6 +20,11 @@ class OrdersController < ApplicationController
   rescue Stripe::CardError => e
     redirect_to cart_path, flash: { error: e.message }
   end
+
+  # def last_order_items
+  #   last_order_id = Order.last.id
+  #   @order_items = Line_item.where(order_id: last_order_id)
+  # end
 
   private
 
@@ -66,5 +73,7 @@ class OrdersController < ApplicationController
     end
     total
   end
+
+
 
 end
