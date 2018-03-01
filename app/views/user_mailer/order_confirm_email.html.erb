@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html' charset='UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Thank you for your order, <%= @current_user.first_name %></h1>
+    <p>
+      We hope you enjoy your products.<br>
+    </p>
+      <% @items.each do |product| %>
+        <p><%= product.product.name %></p>
+      <% end %>
+    <p>Your total was $<%= humanized_money_with_symbol @order.total %><br>
+    Thanks for buying and have a great day!</p>
+  </body>
+</html>

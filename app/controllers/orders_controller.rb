@@ -3,7 +3,9 @@ class OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @order_items = LineItem.where(order_id: params[:id])
- 
+    @current_user = User.find(session[:user_id])
+    UserMailer.order_confirm_email(@current_user, @order_items, @order).deliver_now
+
   end
 
   def create
@@ -21,10 +23,7 @@ class OrdersController < ApplicationController
     redirect_to cart_path, flash: { error: e.message }
   end
 
-  # def last_order_items
-  #   last_order_id = Order.last.id
-  #   @order_items = Line_item.where(order_id: last_order_id)
-  # end
+
 
   private
 
@@ -73,7 +72,5 @@ class OrdersController < ApplicationController
     end
     total
   end
-
-
 
 end

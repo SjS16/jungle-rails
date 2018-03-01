@@ -29,7 +29,7 @@
             TOTAL:
           </th>
           <th>
-            <%= @cart_total %>
+            <%= humanized_money_with_symbol @order.total %>
           </th>
         </tr>
       </tfoot>
