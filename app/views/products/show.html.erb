@@ -25,22 +25,24 @@
         </dl>
       </div>
     </div>
- <div class="product-review-form">
+ <div class="row"><h4>New Review </h4>
+ <div class="col-sm-6">
 <%= form_for [@product, @newreview] do |f| %>
   <% if current_user %>
-  <p>
-    <%= f.label :rating %><br>
+  <div class="form-group">
+    <%= f.label :rating %>
     <%= f.select :rating, [["1",1],["2", 2],["3",3],["4",4],["5",5]]%>
-  </p>
-  <p>
+  </div>
+  <div class="form-group">
     <%= f.label :description %><br>
     <%= f.text_area :description %>
-  </p>
-  <p>
+  </div>
+   <div class="form-group">
     <%= f.submit %>
-  </p>
+</div>
 <% end %>
 <% end %>
+</div>
 </div>
     <div class="panel panel-default items">
       <table class="table table-bordered">
