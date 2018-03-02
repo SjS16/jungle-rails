@@ -6,7 +6,7 @@ class UserMailer < ApplicationMailer
     @order = order
     order_id = @order.id
 
-    mail(to: user.email,
+    mail(to: order.email,
          subject: "Thank you for your purchase. Your order number is #{@order.id}" )
   end
 end

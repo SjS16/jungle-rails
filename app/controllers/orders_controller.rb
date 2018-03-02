@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @order_items = LineItem.where(order_id: params[:id])
-    @current_user = User.find(session[:user_id])
+    # @current_user = User.find(session[:user_id])
   end
 
   def create

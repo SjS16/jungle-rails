@@ -25,7 +25,8 @@
         </dl>
       </div>
     </div>
- <div class="row"><h4>New Review </h4>
+  <h4>New Review</h4>
+ <div class="row">
  <div class="col-sm-6">
 <%= form_for [@product, @newreview] do |f| %>
   <% if current_user %>
@@ -35,7 +36,7 @@
   </div>
   <div class="form-group">
     <%= f.label :description %><br>
-    <%= f.text_area :description %>
+    <%= f.text_area :description, size: "100x2" %>
   </div>
    <div class="form-group">
     <%= f.submit %>
@@ -44,7 +45,8 @@
 <% end %>
 </div>
 </div>
-    <div class="panel panel-default items">
+<p><%= @average %></p>
+    <div class="panel panel-default items"> 
       <table class="table table-bordered">
         <thead>
           <tr>
@@ -65,10 +67,14 @@
               <%= link_to fa_icon('trash'), product_review_url(@product, review), class: 'btn btn-sm btn-danger', data: { method: :delete, confirm: "Are you sure?" } %>
               </td>
               <% end %>
-            
           <tr>
           <% end %>
         </tbody>
+        <tfooter>
+          <tr>
+            <td colspan="4">Average Rating: <%= @average_rating %></td>
+          </tr>
+        </tfooter>
 
   </article>
 
