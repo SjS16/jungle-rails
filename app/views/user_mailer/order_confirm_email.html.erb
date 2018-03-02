@@ -8,7 +8,7 @@
     <p>
       We hope you enjoy your products.<br>
     </p>
-      <% @items.each do |product| %>
+      <% @order.line_items.each do |product| %>
         <p><%= product.product.name %></p>
       <% end %>
     <p>Your total was $<%= humanized_money_with_symbol @order.total %><br>

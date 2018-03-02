@@ -25,6 +25,48 @@
         </dl>
       </div>
     </div>
+ <div class="product-review-form">
+<%= form_for [@product, @newreview] do |f| %>
+  <% if current_user %>
+  <p>
+    <%= f.label :rating %><br>
+    <%= f.select :rating, [["1",1],["2", 2],["3",3],["4",4],["5",5]]%>
+  </p>
+  <p>
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+<% end %>
+</div>
+    <div class="panel panel-default items">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th colspan="3">Reviews</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th colspan="1">Rating</th>
+            <th colspan="3">Description</th>
+          </tr>
+          <% @reviews.reverse.each do |review| %>
+          <tr>
+            <td colspan="1"><%= review.rating%></td>
+            <td colspan="2"><%= review.description%></td>
+              <% if current_user && @current_user.id = review.user_id %>
+              <td colspan="1">
+              <%= link_to fa_icon('trash'), product_review_url(@product, review), class: 'btn btn-sm btn-danger', data: { method: :delete, confirm: "Are you sure?" } %>
+              </td>
+              <% end %>
+            
+          <tr>
+          <% end %>
+        </tbody>
 
   </article>
 

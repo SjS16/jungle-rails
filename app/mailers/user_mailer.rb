@@ -1,8 +1,8 @@
 class UserMailer < ApplicationMailer
   default from: "no-reply@jungle.com"
-  def order_confirm_email(user, items, order)
+  def order_confirm_email(user, order)
     @current_user = user
-    @items = items
+    # @order_items = LineItem.where(order_id: order_id)
     @order = order
     order_id = @order.id
 

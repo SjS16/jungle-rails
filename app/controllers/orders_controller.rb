@@ -4,8 +4,6 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @order_items = LineItem.where(order_id: params[:id])
     @current_user = User.find(session[:user_id])
-    UserMailer.order_confirm_email(@current_user, @order_items, @order).deliver_now
-
   end
 
   def create
@@ -13,6 +11,7 @@ class OrdersController < ApplicationController
     order  = create_order(charge)
 
     if order.valid?
+      UserMailer.order_confirm_email(current_user, order).deliver_now
       empty_cart!
       redirect_to order, notice: 'Your Order has been placed.'
     else
