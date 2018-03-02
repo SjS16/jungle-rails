@@ -14,6 +14,7 @@ class SessionsController < ApplicationController
     else
     # If user's login doesn't work, send them back to the login form.
       redirect_to '/sessions/new'
+      flash[:alert] = "There was something wrong with your login credentials. Please try again."
     end
   end
 

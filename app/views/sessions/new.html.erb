@@ -4,6 +4,10 @@
     <h1>Log in!</h1>
   </header>
 
+  <% flash.each do |warning| %>
+    <div class="alert alert-danger"><%= warning %></div>
+  <% end %>
+
 <%= form_tag '/sessions' do %>
 
   Email: <%= text_field_tag :email %>

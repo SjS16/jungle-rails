@@ -9,7 +9,8 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       redirect_to '/'
     else
-      redirect_to '/signup'
+      redirect_to '/users/new'
+      flash[:alert] = "There was something wrong with your login credentials. Please try again."
     end
   end
 
