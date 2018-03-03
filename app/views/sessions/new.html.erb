@@ -4,8 +4,8 @@
     <h1>Log in!</h1>
   </header>
 
-  <% flash.each do |warning| %>
-    <div class="alert alert-danger"><%= warning %></div>
+  <% if flash[:alert] %>
+    <div class="alert alert-danger"><%= flash[:alert] %></div>
   <% end %>
 
 <%= form_tag '/sessions' do %>

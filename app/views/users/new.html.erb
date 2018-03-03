@@ -4,16 +4,20 @@
     <h1>Sign Up!</h1>
   </header>
 
+  
+<%= form_for @user do |f| %>
 
+  <% if @user.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger">
+      <h4><%= pluralize(@user.errors.count, "error") %> prohibited this contact from being saved:</h4>
 
-  <% flash.each do |warning| %>
-    <div class="alert alert-danger"><%= warning %></div>
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
   <% end %>
-
-
-  
-<%= form_for :user, url: '/users' do |f| %>
-  
   
   First Name: <%= f.text_field :first_name, class: 'form-control' %><br>
   Last Name: <%= f.text_field :last_name, class: 'form-control' %><br>
