@@ -60,7 +60,13 @@
           </tr>
           <% @reviews.reverse.each do |review| %>
           <tr>
-            <td colspan="1"><%= review.rating%></td>
+            <% arr = Array.new(5) %>
+            <% count = review.rating %>
+            <% for i in 0..4 %>
+            <% count - 1 >= 0 ? arr[i] = 'star' : arr[i] = 'star-o' %>
+            <% count -= 1  %>
+            <% end %>
+            <td colspan="1"><%= fa_icon arr[0] %> <%= fa_icon arr[1] %> <%= fa_icon arr[2] %> <%= fa_icon arr[3] %> <%= fa_icon arr[4] %></td>
             <td colspan="2"><%= review.description%></td>
               <% if current_user && @current_user.id = review.user_id %>
               <td colspan="1">

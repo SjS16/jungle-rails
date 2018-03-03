@@ -5,7 +5,13 @@
       <h4><%= product.name %></h4>
     <% end %>
     <% if product.reviews.count > 0 %>
-      <h5>Average Rating: <%= product.reviews.sum(:rating) / product.reviews.count %></h5>
+        <% arr = Array.new(5) %>
+        <% count = product.reviews.sum(:rating) / product.reviews.count %>
+        <% for i in 0..4 %>
+        <% count - 1 >= 0 ? arr[i] = 'star' : arr[i] = 'star-o' %>
+        <% count -= 1  %>
+        <% end %>
+      <h5>Average Rating: <%= fa_icon arr[0] %> <%= fa_icon arr[1] %> <%= fa_icon arr[2] %> <%= fa_icon arr[3] %> <%= fa_icon arr[4] %></h5>
     <% end %>
   </header>
   <p class="description">
