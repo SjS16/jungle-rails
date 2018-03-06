@@ -9,7 +9,7 @@ class ProductsController < ApplicationController
     @newreview = Review.new
     @reviews = Review.where(product_id: params[:id])
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
-    if @reviews
+    if @reviews.count > 0
       @average_rating = Review.where(product_id: params[:id]).average(:rating).round(2)
     end
   end
