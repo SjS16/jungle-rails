@@ -21,13 +21,14 @@ RSpec.feature "Visitor navigates to specific product", type: :feature, js: true 
     # ACT
     visit root_path
 
-      first('article.product header').find('a[href^="/products/"]').click
+    first('article.product header').find('a[href^="/products/"]').click
+    
     sleep 2
     # DEBUG
     save_screenshot "product.png"
 
     # VERIFY
-    expect(page).to have_content
+    expect(page).to have_css('.products-show')
   end
 
 end
