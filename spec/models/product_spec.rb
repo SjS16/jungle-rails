@@ -22,7 +22,6 @@ RSpec.describe Product, type: :model do
     end 
 
     it 'is not valid without a name' do
-
       @product.name = nil
       expect(@product).to_not be_valid;
       expect(@product.errors.full_messages).to include "Name can't be blank"
